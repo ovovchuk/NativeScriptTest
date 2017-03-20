@@ -1,0 +1,23 @@
+<AppActionBar></AppActionBar>
+<FlexboxLayout justifyContent="center" alignContent="center">
+  <StackLayout class="login-container">
+    <Image class="logo" src="~/images/apple.jpg" (tap)="onImageTap()"></Image>
+    <StackLayout class="input-field">
+      <TextField
+        hint="Email address"
+        keyboardType="email"
+        autocapitalizationType="none"
+        autocorrect="false" [(ngModel)]="user.email">
+      </TextField>
+    </StackLayout>
+    <StackLayout class="input-field">
+      <TextField
+        hint="Password"
+        secure="true"
+        autocapitalizationType="none"
+        autocorrect="false" [(ngModel)]="user.password">
+      </TextField>
+    </StackLayout>
+    <Button class="login_btn" text="Sign In" (tap)="login()"></Button>
+  </StackLayout>
+</FlexboxLayout>

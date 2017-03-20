@@ -1,0 +1,13 @@
+.login-container {
+  width: 70%;
+}
+
+.logo {
+  width: 150dpi;
+  height: 150dpi;
+}
+
+.login_btn {
+  color: white;
+  background-color: lightskyblue;
+}
