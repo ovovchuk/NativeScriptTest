@@ -1,4 +1,4 @@
-import { Component, ViewContainerRef } from "@angular/core";
+import { Component, OnInit, ViewContainerRef } from "@angular/core";
 import { Router } from "@angular/router";
 import { DatePicker } from "ui/date-picker";
 import * as TimeDatePicker from "nativescript-timedatepicker";
@@ -11,12 +11,15 @@ import { WeeksModalComponent } from "../weeks-modal/weeks-modal.component";
   templateUrl: "timesheet/timesheet.component.html",
   styleUrls: ["timesheet/timesheet.component.css"]
 })
-export class TimesheetComponent {
+export class TimesheetComponent implements OnInit {
   items: string[];
 
   constructor(private router: Router,
               private modalService: ModalDialogService,
               private vcRef: ViewContainerRef) {
+  }
+
+  ngOnInit(): void {
     this.items = ["Week 1", "Week 2", "Week 3", "Week 4", "Week 5"];
   }
 
@@ -55,7 +58,7 @@ export class TimesheetComponent {
   public selectWeek() {
     let options = {
       context: {},
-      fullscreen: true,
+      fullscreen: false,
       viewContainerRef: this.vcRef
     };
 

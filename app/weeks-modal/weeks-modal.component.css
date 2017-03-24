@@ -1,0 +1,12 @@
+StackLayout {
+  width: 80%;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.modal-title {
+  margin: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}

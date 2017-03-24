@@ -4,7 +4,8 @@ import { ModalDialogParams } from "nativescript-angular";
 
 @Component({
   selector: "weeks-modal",
-  templateUrl: "weeks-modal/weeks-modal.component.html"
+  templateUrl: "weeks-modal/weeks-modal.component.html",
+  styleUrls: ["weeks-modal/weeks-modal.component.css"]
 })
 export class WeeksModalComponent implements OnInit {
   weeks: string[];
