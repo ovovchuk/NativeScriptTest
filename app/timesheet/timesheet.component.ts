@@ -13,6 +13,8 @@ import { WeeksModalComponent } from "../weeks-modal/weeks-modal.component";
 })
 export class TimesheetComponent implements OnInit {
   items: string[];
+  private isFlashLightOn = false;
+  private camera: any;
 
   constructor(private router: Router,
               private modalService: ModalDialogService,
@@ -43,7 +45,8 @@ export class TimesheetComponent implements OnInit {
     });
 
     //Initialize the PickerManager (.init(yourCallback, title, initialDate))
-    TimeDatePicker.init(mCallback, null, null);
+    let initialDate = new Date(2017, 3, 7);
+    TimeDatePicker.init(mCallback, null, initialDate);
 
     //Show the dialog
     TimeDatePicker.showDatePickerDialog();
@@ -64,5 +67,31 @@ export class TimesheetComponent implements OnInit {
 
     this.modalService.showModal(WeeksModalComponent, options)
       .then(week => console.log("Selected week " + week));
+  }
+
+  public flashlight() {
+    let cam = this.getCamera();
+    let params = cam.getParameters();
+
+    if (this.isFlashLightOn) {
+      params.setFlashMode(android.hardware.Camera.Parameters.FLASH_MODE_OFF);
+      cam.setParameters(params);
+      cam.stopPreview();
+      cam.release();
+      this.isFlashLightOn = false;
+    } else {
+      params.setFlashMode(android.hardware.Camera.Parameters.FLASH_MODE_TORCH);
+      cam.setParameters(params);
+      cam.startPreview();
+      this.isFlashLightOn = true;
+    }
+  }
+
+  private getCamera(): android.hardware.Camera {
+    if (!this.isFlashLightOn) {
+      this.camera = android.hardware.Camera.open();
+    }
+
+    return this.camera;
   }
 }
